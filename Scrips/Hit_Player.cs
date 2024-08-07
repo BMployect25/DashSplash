@@ -11,7 +11,7 @@ public class Hit_Player : MonoBehaviour
         if (coll.CompareTag("Enemy"))
         {
             coll.GetComponent<Vida_Enemigo>().Vida -= damage;
-            coll.GetComponent<Vida_Enemigo>().cronometro = 0.5f;
+            coll.GetComponent<Vida_Enemigo>().cronometro = 2f;
         }
     }
     // Start is called before the first frame update

@@ -49,7 +49,7 @@ public class PlayerContoler : MonoBehaviour
 
     public void Attack()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetBool("Attack",true);
         }
