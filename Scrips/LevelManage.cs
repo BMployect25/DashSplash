@@ -12,7 +12,7 @@ public class LevelManage : MonoBehaviour
 
     public void BotonSalir()
     {
-       Debug.Log("salir del juego");
-       Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 }

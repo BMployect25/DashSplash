@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Respawn : MonoBehaviour
 {
     public GameObject[] hearts;
     private int life;
     public Animator animator;
+    
+    public event EventHandler MuerteJugador;
+
+    [SerializeField] private GameOver gameOver;
 
     void Start()
     {
@@ -20,7 +26,9 @@ public class Respawn : MonoBehaviour
         {
             Destroy(hearts[0].gameObject);
             animator.Play("Hit");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            MuerteJugador?.Invoke(this, EventArgs.Empty);
+            Destroy(gameObject);
+
         }
         else if (life < 2)
         {
