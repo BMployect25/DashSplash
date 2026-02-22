@@ -10,12 +10,15 @@ public class PlayerContoler : MonoBehaviour
     private Rigidbody2D Rig;
     private Animator animator;
     private SpriteRenderer spritePersonaje;
+    private bool Damager;
+    public bool muerte;
     public bool isGrounded;
     public float speed;
     Vector2 direction;
 
     public int Daño;
     public int vida = 4;
+    private bool recibiendoDaño;
 
     void Update()
     {
@@ -78,11 +81,31 @@ public class PlayerContoler : MonoBehaviour
         }
         else
         {
-            animator.SetFloat("Speed", 0);
-
+            animator.SetFloat("Speed", 0); 
         }
+
+        animator.SetBool("Damage", recibiendoDaño); 
     }
 
+    public void Damage(int daño)
+    {        
+        if (!recibiendoDaño)
+        {
+            Damager = true;
+            vida -= daño;
+            if(vida <= 0)
+            {
+                muerte = true;
+            }
+            recibiendoDaño = true;
+            animator.SetTrigger("Damage");
+            Invoke("ResetDaño", 1f);
+        }
+    }
+    public void ResetDaño()
+    {
+        recibiendoDaño = false;
+    }
 
     
 }

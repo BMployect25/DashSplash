@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public Collider2D collider2D;
+    public new Collider2D collider2D;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public GameObject destroyParticle;
